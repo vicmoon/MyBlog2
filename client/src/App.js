@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from "react";
 
 function App() {
-  const [backendData, setBackendData] = useState({});
+  const [backendData, setBackendData] = useState([]);
 
   useEffect(() => {
-    fetch("/api")
+    fetch("http://localhost:5000")
       .then((response) => {
         console.log("Fetch response:", response);
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched data:", data);
+        console.log("Fetched data:", data); // Make sure this logs an array of posts
         setBackendData(data);
       });
   }, []);
 
   return (
     <div>
-      {backendData && backendData.users ? (
-        backendData.users.map((user, i) => <p key={i}>{user}</p>)
-      ) : (
-        <p>Loading...</p>
-      )}
+      {backendData.map((post, i) => (
+        <div key={i}>
+          <h2>{post.title}</h2>
+          <p>{post.content}</p>
+          {post.imageURL && <img src={post.imageURL} alt={post.title} />}
+        </div>
+      ))}
     </div>
   );
 }
