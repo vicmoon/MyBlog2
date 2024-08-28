@@ -42,3 +42,8 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
+
+//supabase
+// curl 'https://neyglygzxmppevxvqdst.supabase.co/rest/v1/posts' \
+// -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5leWdseWd6eG1wcGV2eHZxZHN0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQ4NDE0MTYsImV4cCI6MjA0MDQxNzQxNn0.HmsFM3be1G3vxYDjtqxySBS7thWb_M316fQzIbsnMAY" \
+// -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5leWdseWd6eG1wcGV2eHZxZHN0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQ4NDE0MTYsImV4cCI6MjA0MDQxNzQxNn0.HmsFM3be1G3vxYDjtqxySBS7thWb_M316fQzIbsnMAY"

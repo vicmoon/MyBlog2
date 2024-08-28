@@ -17,6 +17,12 @@ function App() {
 
   return (
     <div>
+      <header>
+        <div className="log">
+          <img src="logo.png" height="68" width="68" alt=" My logo"></img>
+        </div>
+      </header>
+
       {backendData.map((post, i) => (
         <div key={i}>
           <h2>{post.title}</h2>
