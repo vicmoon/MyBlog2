@@ -5,12 +5,14 @@ const uri = process.env.MONGODB_URI;
 
 const connectDB = async () => {
   try {
-    mongoose.connect(
-      "mongodb+srv://Admin_Victoria:lJwV8fJpjGMSMRg2@clusterx.govu4la.mongodb.net/blogDB"
-    );
+    await mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log("Database connected");
   } catch (error) {
-    console.log("Ooops, there is a problem with the database" + error);
+    console.log("Ooops, there is a problem with the database: " + error);
+    process.exit(1); // Exit the process if the database connection fails
   }
 };
 
