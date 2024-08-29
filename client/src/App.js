@@ -27,7 +27,6 @@ function App() {
         <div key={i}>
           <h2>{post.title}</h2>
           <p>{post.content}</p>
-          {post.imageURL && <img src={post.imageURL} alt={post.title} />}
         </div>
       ))}
     </div>

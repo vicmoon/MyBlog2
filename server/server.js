@@ -26,7 +26,6 @@ app.post("/compose", (req, res) => {
   const post = new PostModel({
     title: req.body.title,
     content: req.body.content,
-    imageURL: req.body.url,
   });
 
   post.save((err) => {
