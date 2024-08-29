@@ -1,7 +1,8 @@
 const express = require("express");
 const connectDB = require("./database");
-const PostModel = require("./models/Post");
+const Post = require("./models/Post");
 const bodyParser = require("body-parser");
+const postRoutes = require("./routes/posts_route");
 const app = express();
 const cors = require("cors");
 
@@ -11,28 +12,35 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.json());
 app.use(cors());
 
-app.get("/", async (req, res) => {
-  try {
-    const posts = await PostModel.find().sort({ createdAt: -1 });
-    console.log("Posts fetched from DB:", posts); // Log the fetched posts
-    res.json(posts);
-  } catch (err) {
-    console.log("Error fetching posts:", err);
-    res.status(500).json({ message: "Server Error" });
-  }
-});
+app.use(postRoutes);
+
+//list posts
+// app.get("/", async (req, res) => {
+//   try {
+//     const posts = await Post.find().sort({ createdAt: -1 });
+//     console.log("Posts fetched from DB:", posts); // Log the fetched posts
+//     res.json(posts);
+//   } catch (err) {
+//     console.log("Error fetching posts:", err);
+//     res.status(500).json({ message: "Server Error" });
+//   }
+// });
+
+// create a new post
 
 app.post("/compose", (req, res) => {
-  const post = new PostModel({
+  const post = new Post({
     title: req.body.title,
     content: req.body.content,
+    imageURL: req.body.url,
   });
 
   post.save((err) => {
     if (!err) {
       res.redirect("/");
+      console.log("saving the post returned an error:" + err);
     } else {
-      console.log(err);
+      console.log("saving the post returned an error:" + err);
     }
   });
 });
